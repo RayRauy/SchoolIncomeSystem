@@ -1,0 +1,44 @@
+:root {
+    font-family: var(--font-sans);
+    --nav-item-hover-color: #328bd9;
+    --nav-item-side-border-color: #0f54c2;
+    --bs-primary-custom: #2b70df;
+}
+
+.entryarea {
+    position: relative;
+    margin-bottom: 1.25rem;
+}
+
+.labelline {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0 0.35rem;
+    font-size: 1em;
+    background-color: #fff;
+    display: inline-block;
+    pointer-events: none;
+    transition: 0.2s ease, color 0.2s ease, top 0.2s ease;
+    z-index: 2;
+}
+
+input {
+    position: relative;
+    transition: 0.1s ease, color 0.1s ease;
+}
+
+input:focus,
+input:valid {
+    color: #328bd9;
+    border-color: #328bd9;
+}
+
+input:focus + .labelline,
+input:valid + .labelline {
+    top: 0;
+    transform: translateY(-50%) scale(0.88);
+    color: #328bd9;
+}
