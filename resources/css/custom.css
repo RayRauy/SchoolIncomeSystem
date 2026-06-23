@@ -68,7 +68,7 @@ html[data-bs-theme="dark"] .search-input {
 html[data-bs-theme="light"] .search-input {
     border: none;
     background-color: #f4f4f4;
-    color: #ffffff;
+    color: #000000;
     box-shadow: 0 0 10px rgba(57, 56, 56, 0.477);
 }
 
