@@ -1,16 +1,15 @@
 const token = import.meta.env.VITE_MAPBOX_TOKEN;
-const url_mapbox = "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=" + token;
+const url_mapbox =
+    "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=" +
+    token;
 var mymap = L.map("Leaf_default").setView([51.505, -0.09], 13),
     popup =
-        (L.tileLayer(
-            url_mapbox,
-            {
-                maxZoom: 18,
-                attribution:
-                    'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                id: "mapbox/streets-v11",
-            },
-        ).addTo(mymap),
+        (L.tileLayer(url_mapbox, {
+            maxZoom: 18,
+            attribution:
+                'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: "mapbox/streets-v11",
+        }).addTo(mymap),
         L.marker([51.5, -0.09])
             .addTo(mymap)
             .bindPopup("<b>Hello world!</b><br />I am a popup.")

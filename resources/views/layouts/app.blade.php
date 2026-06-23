@@ -32,7 +32,9 @@
      <link href="{{ asset('template/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
      <link href="{{ asset('template/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 
-     @vite(['resources/css/custom.css'])
+     @vite(['resources/css/custom.css', 'resources/js/app.js', 'resources/css/app.css'])
+     @livewireStyles()
+     @stack('style')
 </head>
 
 <body>
@@ -51,9 +53,9 @@
                     </li> 
                     <li class="mx-3 welcome-text">
                         @if(Auth::check())
-                            <h3 class="mb-0 fw-bold text-truncate">Good Morning, {{ Auth::user()->name }}</h3>
+                            <h3 class="mb-0 fw-bold text-truncate">Welcoming Teacher {{ Str::of(Auth::user()->name)->upper() }}</h3>
                         @else
-                            <h3 class="mb-0 fw-bold text-truncate">Good Morning, Guest</h3>                            
+                            <h3 class="mb-0 fw-bold text-truncate">Welcoming Guest</h3>                            
                         @endif
                         <!-- <h6 class="mb-0 fw-normal text-muted text-truncate fs-14">Here's your overview this week.</h6> -->
                     </li>                   
@@ -331,7 +333,7 @@
     <div class="startbar d-print-none">
         <!--start brand-->
         <div class="brand">
-            <a href="index.html" class="logo">
+            <a href="{{ route('home') }}" class="logo">
                 <span>
                     <img src="{{ asset('template/assets/images/logo-sm.png') }}" alt="logo-small" class="logo-sm">
                 </span>
@@ -356,39 +358,31 @@
                             <span>Main Menu</span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button"
+                            <a class="nav-link" href="#sidebarDashboards" role="button"
                                 aria-expanded="false" aria-controls="sidebarDashboards">
                                 <i class="iconoir-home-simple menu-icon"></i>
                                 <span>Dashboards</span>
                             </a>
-                            <div class="collapse " id="sidebarDashboards">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="ahahdu">Function 1</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="skjf">Function 2</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="kjdf">Function 3</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="kjdf">Function 4</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="kjdf">Function 5</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="kjdf">Function 6</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="kjdf">Function 7</a>
-                                    </li><!--end nav-item-->
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="kjdf">Function 8</a>
-                                    </li><!--end nav-item-->
-                                </ul><!--end nav-->
-                            </div><!--end startbarDashboards-->
+                            <a class="nav-link" href="{{ route('users') }}" role="button">
+                                <i class="iconoir-user menu-icon"></i>
+                                <span>Users</span>
+                            </a>
+                            <a class="nav-link" href="#unknown" role="button">
+                                <i class="iconoir-union menu-icon"></i>
+                                <span>Students</span>
+                            </a>
+                            <a class="nav-link" href="#unknown" role="button">
+                                <i class="iconoir-tv menu-icon"></i>
+                                <span>Reports</span>
+                            </a>
+                            <a class="nav-link" href="#unknown" role="button">
+                                <i class="iconoir-data-transfer-both menu-icon"></i>
+                                <span>Data</span>
+                            </a>
+                            <a class="nav-link" href="#unknown" role="button">
+                                <i class="iconoir-tools menu-icon"></i>
+                                <span>Settings</span>
+                            </a>
                         </li><!--end nav-item-->
                     </ul><!--end navbar-nav--->
                 </div>

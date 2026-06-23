@@ -10,18 +10,31 @@ try {
     lucide.createIcons();
 } catch (e) {}
 try {
+    // Load saved theme on page load
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+        document.documentElement.setAttribute("data-bs-theme", savedTheme);
+    }
+
     var themeColorToggle = document.getElementById("light-dark-mode");
-    themeColorToggle && themeColorToggle.addEventListener("click", function (e) {
-            var current = document.documentElement.getAttribute("data-bs-theme");
-            var next = "light" === current ? "dark" : "light";
-            document.documentElement.setAttribute("data-bs-theme", next);
-            try {
-                localStorage.setItem("theme", next);
-            } catch (err) {
-                console.warn("Could not persist theme to localStorage", err);
-            }
+
+    themeColorToggle &&
+        themeColorToggle.addEventListener("click", function () {
+            const currentTheme =
+                document.documentElement.getAttribute("data-bs-theme") ||
+                "light";
+
+            const newTheme = currentTheme === "light" ? "dark" : "light";
+
+            document.documentElement.setAttribute("data-bs-theme", newTheme);
+
+            // Save theme
+            localStorage.setItem("theme", newTheme);
         });
-} catch (e) {}
+} catch (e) {
+    console.error(e);
+}
 try {
     var collapsedToggle = document.querySelector(".mobile-menu-btn");
     const h = document.querySelector(".startbar-overlay"),
