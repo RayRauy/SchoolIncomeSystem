@@ -43,7 +43,7 @@
 
                 <!-- Menu -->
                 <ul class="dropdown-menu dropdown-menu-end custom-dropdown">
-                    @foreach ([10, 15, 20] as $size)
+                    @foreach ([10, 15, 20, 30] as $size)
                         <li>
                             <button class="dropdown-item {{ $perPage == $size ? 'active' : '' }}"
                                 wire:click="$set('perPage', {{ $size }})">

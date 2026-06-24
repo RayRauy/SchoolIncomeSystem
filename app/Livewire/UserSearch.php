@@ -26,7 +26,10 @@ class UserSearch extends Component
     public function render()
     {
         return view('livewire.user-search', [
-            'users' => User::query()->where('name', 'LIKE', "%{$this->userSearch}%")->paginate($this->perPage)->onEachSide(1),
+            'users' => User::query()
+                ->where('name', 'LIKE', "%{$this->userSearch}%")
+                ->paginate($this->perPage)->onEachSide(1)
+                ->appends(['query' => $this->userSearch]),
         ]);
     }
 }
